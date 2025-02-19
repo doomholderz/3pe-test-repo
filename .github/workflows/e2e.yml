@@ -3,11 +3,11 @@ name: E2E Tests
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, synchronize, reopened, labeled]
     branches:
-      - master
+      - main
 
 jobs:
   e2e:
