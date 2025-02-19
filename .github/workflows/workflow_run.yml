@@ -10,10 +10,12 @@ jobs:
 
     steps:
       - name: pr_id download artifact
-        uses: dawidd6/action-download-artifact@v2.11.0
+        uses: actions/download-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          run_id: ${{ github.event.workflow_run.id }}
+          name: pr_num
+          run-id: 13411678370
+          #run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - shell: bash
         run: |
