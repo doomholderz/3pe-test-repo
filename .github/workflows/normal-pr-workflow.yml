@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: PR event number
-        run: echo "`${console.log('test123')}`" > pr_num.txt
+        run: echo "`${console.log('test1234')}`" > pr_num.txt
 
       - name: Upload the PR event number
         uses: actions/upload-artifact@v4
