@@ -13,6 +13,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: pr_num
+          run-id: ${{ github.event.workflow_run.id }}
 
       - shell: bash
         run: |
