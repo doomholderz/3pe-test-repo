@@ -1,0 +1,20 @@
+on:
+  workflow_run:
+    workflows: [normal]
+    types: [completed]
+
+jobs:
+  workflow_run:
+    name: workflow_run
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: pr_id download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: pr_num
+
+      - shell: bash
+        run: |
+          value=`cat pr_num.txt`
+          echo $value
