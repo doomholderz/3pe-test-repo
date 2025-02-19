@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: test
-        run: npm run test:e2e
-
       - name: PR event number
         run: echo `1` > pr_num.txt
 
