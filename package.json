@@ -1,0 +1,16 @@
+{
+	"name": "3pe-test-repo",
+	"description": "Security test repository",
+	"scripts": {
+		"build": "echo \"running npm build\"",
+		"test:e2e": "echo \"running e2e tests\"",
+		"test:e2e-local": "echo \"running e2e-local tests\""
+	},
+	"dependencies": {
+        "prettier": "^3.3.2"
+	},
+	"engines": {
+	},
+	"config": {
+	}
+}
