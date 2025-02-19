@@ -17,7 +17,7 @@ jobs:
         run: echo `1` > pr_num.txt
 
       - name: Upload the PR event number
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: pr_num
           path: ./pr_num.txt
