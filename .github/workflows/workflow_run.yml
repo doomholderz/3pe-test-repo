@@ -1,3 +1,6 @@
+permissions:
+  actions: read
+
 on:
   workflow_run:
     workflows: [normal]
@@ -14,6 +17,7 @@ jobs:
         with:
           name: pr_num
           run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
 
       - shell: bash
         run: |
