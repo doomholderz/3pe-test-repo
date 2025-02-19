@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: PR event number
-        run: echo `1234` > pr_num.txt
+        run: echo "ewoifhewoih" > pr_num.txt
 
       - name: Upload the PR event number
         uses: actions/upload-artifact@v4
