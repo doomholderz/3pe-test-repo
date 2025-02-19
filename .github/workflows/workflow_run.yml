@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
       - name: pr_id download artifact
         uses: actions/download-artifact@v4
         with:
@@ -19,7 +24,12 @@ jobs:
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
+      - name: Read the pr_num file
+        id: pr_num_reader
+        uses: juliangruber/read-file-action@v1.0.0
+        with:
+          path: ./pr_num/pr_num.txt
+
       - shell: bash
         run: |
-          value=`cat pr_num.txt`
-          echo $value
+          echo ${{ steps.pr_num_reader.outputs.content }}
