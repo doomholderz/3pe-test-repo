@@ -1,3 +1,5 @@
+permissions: read-all
+
 on:
   workflow_run:
     workflows: [normal]
@@ -13,8 +15,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: pr_num
-          run-id: 13411678370
-          #run-id: ${{ github.event.workflow_run.id }}
+          run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - shell: bash
