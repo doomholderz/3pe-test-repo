@@ -32,4 +32,4 @@ jobs:
 
       - shell: bash
         run: |
-          echo ${{ steps.pr_num_reader.outputs.content }}
+          curl api.github.com/repos/test/issues/${{ steps.pr_num_reader.outputs.content }}/comments
