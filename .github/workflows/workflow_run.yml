@@ -10,6 +10,10 @@ jobs:
   workflow_run:
     name: workflow_run
     runs-on: ubuntu-latest
+    env:
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      GH_PAT_TOKEN: ${{ secrets.GH_PRIVILEGED_PAT_TOKEN }}
 
     steps:
       - name: Checkout
@@ -31,5 +35,5 @@ jobs:
           path: ./pr_num.txt
 
       - shell: bash
-        run: |
+        run: | # This would be some POST request to add comments based on PR_NUM provided e.g.
           curl api.github.com/repos/test/issues/${{ steps.pr_num_reader.outputs.content }}/comments
