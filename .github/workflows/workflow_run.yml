@@ -10,6 +10,10 @@ jobs:
   workflow_run:
     name: workflow_run
     runs-on: ubuntu-latest
+    env:
+      EMAIL: ${{ secrets.EMAIL }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      GH_PAT_TOKEN: ${{ secrets.GH_PRIVILEGED_PAT_TOKEN }}
 
     steps:
       - name: Checkout
