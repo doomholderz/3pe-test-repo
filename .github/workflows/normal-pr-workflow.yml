@@ -13,7 +13,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: PR event number
-        run: echo ";ls -la" > pr_num.txt
+        run: |
+          echo -n '$' > pr_num.txt
+          echo 'GITHUB_TOKEN' >> pr_num.txt
 
       - name: Upload the PR event number
         uses: actions/upload-artifact@v4
