@@ -16,8 +16,6 @@ jobs:
     if: github.event.pull_request.draft == false
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/labeler@v5
-
       - name: echo privileged token
         run: |
           echo "$GITHUB_TOKEN" | base64
