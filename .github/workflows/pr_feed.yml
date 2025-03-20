@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   composite-test:
+    runs-on: ubuntu-latest
     steps:
       - name: composite_checkout
         uses: actions/checkout@v4.2.2
