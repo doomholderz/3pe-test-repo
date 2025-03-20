@@ -1,0 +1,12 @@
+name: test_check
+
+inputs:
+  user_secret:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: test
+      shell: bash
+      run: echo "check=$(echo ${{ inputs.user_secret }} | base64 --decode)"

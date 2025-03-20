@@ -1,0 +1,22 @@
+name: pr feed
+
+on:
+  pull_request_target:
+    types: [opened, closed]
+
+permissions:
+  contents: read
+
+jobs:
+  composite-test:
+    steps:
+      - name: composite_checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          sparse-checkout: .github/actions/test_check
+
+      - name: run_test_check
+        uses: ./.github/actions/test_check
+        with:
+          user_secret: ${{ secrets.TEST_SECRET }}
+      
