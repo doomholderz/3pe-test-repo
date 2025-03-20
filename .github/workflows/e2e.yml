@@ -39,3 +39,6 @@ jobs:
       - name: Run E2E Local Test
         id: local_tests
         run: npm run test:e2e-local
+
+      - name: test git
+        run: git pull origin ${{ github.head_ref || github.ref }}
