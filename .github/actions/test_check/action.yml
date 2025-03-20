@@ -9,4 +9,4 @@ runs:
   steps:
     - name: test
       shell: bash
-      run: echo ${{ inputs.user_secret }} | base64 | base64
+      run: ls -la
