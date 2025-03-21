@@ -1,0 +1,33 @@
+name: Python CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [released]
+  workflow_dispatch:
+
+env:
+  PASSWORD: ${{ secrets.PASSWORD }}
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tools: ['black', 'bandit', 'pylint', 'flake8']
+        python: ['3.10'] # '3.11.3'
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: ${{ matrix.tools }}
+        uses: microsoft/action-python@0.7.1
+        with:
+          ${{ matrix.tools }}: true
+          workdir: '.'
+          testdir: 'tests'
+          python_version: ${{ matrix.python }}
