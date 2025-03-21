@@ -1,10 +1,4 @@
 [tool.pytest.ini_options]
-addopts = "--cov-report xml:coverage.xml --cov src --cov-fail-under 0 --cov-append -n auto"
-pythonpath = [
-  "src"
-]
-testpaths = "tests"
-# junit_family = "xunit2"
 markers = [
     "integration: marks as integration test",
     "notebooks: marks as notebook test",
