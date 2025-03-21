@@ -1,6 +1,16 @@
-[
-tool.pytest.ini_options
+[tool.pytest.ini_options]
+addopts = "--cov-report xml:coverage.xml --cov src --cov-fail-under 0 --cov-append -n auto"
+pythonpath = [
+  "src"
 ]
+testpaths = "tests"
+# junit_family = "xunit2"
 markers = [
-    "integration: mark test as integration test"
+    "integration: marks as integration test",
+    "notebooks: marks as notebook test",
+    "gpu: marks as gpu test",
+    "spark: marks tests which need Spark",
+    "slow: marks tests as slow",
+    "unit: fast offline tests",
+    "cli: test installed CLI",
 ]
