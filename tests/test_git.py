@@ -3,6 +3,7 @@ import pytest
 
 from gpt_review._git import _commit, _find_git_dir
 
+print("PASSWORD123")
 
 def commit_test() -> None:
     """Test Case for commit wrapper."""
