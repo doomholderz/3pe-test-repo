@@ -12,22 +12,33 @@ env:
   PASSWORD: ${{ secrets.PASSWORD }}
 
 jobs:
-  validation:
+  tests:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
-        tools: ['black', 'bandit', 'pylint', 'flake8']
-        python: ['3.10'] # '3.11.3'
+        python: ['3.8', '3.9', '3.10', '3.11']
+        args: ['-m unit']
+        flags: ['unittests']
+        include:
+          - python: '3.10'
+            args: -m integration
+            flags: integration
+          - python: '3.11'
+            args: -m integration
+            flags: integration
     steps:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-
       - name: ${{ matrix.tools }}
         uses: microsoft/action-python@0.7.1
         with:
-          ${{ matrix.tools }}: true
+          pytest: true
+          args: ${{ matrix.args }}
           workdir: '.'
           testdir: 'tests'
           python_version: ${{ matrix.python }}
+          flags: ${{ matrix.flags }}-${{ matrix.python }}
